@@ -7,17 +7,18 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
 
 
-def extract_feature(datas):
+def extract_feature(img_paths, img_labels):
     total_descriptors = np.array([])
     descriptor_lengths = []
     train_labels = []
 
-    total = len(datas)
+    total = len(img_paths)
     processed = 0
-    for data in datas:
-        train_labels.append(data[1])
+    for i in range(total):
+        img_path = img_paths[i]
+        label = img_labels[i]
+        train_labels.append(label)
 
-        img_path = "knots/{}".format(data[0])
         img = cv2.imread(img_path)
 
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -39,7 +40,7 @@ def extract_feature(datas):
 
     # Perform k-means clustering
     print("Starting k-means")
-    k = len(datas) # 데이터의 개수에 비례하게 설정
+    k = 500 # 데이터의 개수에 비례하게 설정
     kmeans = KMeans(n_clusters=k, verbose=1).fit(total_descriptors)
     print("k-means clustering done...")
 

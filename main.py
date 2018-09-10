@@ -1,38 +1,36 @@
+import os
+import re
 from preprocess import preprocess
 from feature_extraction import extract_feature
 from training import train
 
 
-img_dir = "knots"
+img_dir = "augmentation"
 data_file = "names.txt"
 
 with open(data_file, "r") as data:
     datas = data.readlines()
 
-datas = [data.rstrip('\n').split() for data in datas]
+orig_labels = [data.rstrip('\n').split()[1] for data in datas]
+
+img_paths = []
+img_labels = []
+
+files = os.listdir(img_dir)
+for file in files:
+    image_num = int(re.search("(knot)(\d+)(_0_)(\d+)(.ppm)", file).group(2)) - 1
+    path = os.path.join(img_dir, file)
+    img_paths.append(path)
+    img_labels.append(orig_labels[image_num])
 
 # print("Starting Preprocessing...")
 # preprocess(img_dir, datas)
 # print("Preprocessing Done...")
 
 print("Extracting Feature...")
-# extract_feature(datas)
+extract_feature(img_paths, img_labels)
 print("Feature Extracting Done...")
 
 print("Starting Training...")
 train(datas, "data")
 print("Training Done...")
-
-"""
-# import matplotlib.pyplot as plt
-plt.subplot(1, 3, 1), plt.imshow(img, cmap='gray')
-plt.xticks([]), plt.yticks([])
-plt.xlabel('Original')
-plt.subplot(1, 3, 2), plt.imshow(preprocessed_img, cmap='gray')
-plt.xticks([]), plt.yticks([])
-plt.xlabel('After diffusion')
-plt.subplot(1, 3, 3), plt.imshow(gradient_image, cmap='gray')
-plt.xticks([]), plt.yticks([])
-plt.xlabel('Gradient after diffusion')
-plt.show()
-"""

@@ -33,24 +33,26 @@ def train(datas, output_dir):
     train_set, test_set = np.split(features, [train_set_cnt])
     train_labels, test_labels = np.split(labels, [train_set_cnt])
 
-    model = KNeighborsClassifier(n_neighbors=3)
-    model.fit(train_set, train_labels)
+    for k_c in range(6):
+        print("\nITERATION {}, K: {}".format(k_c + 1, k_c * 2 + 1))
+        model = KNeighborsClassifier(n_neighbors=(k_c * 2 + 1))
+        model.fit(train_set, train_labels)
 
-    label_datas = [data[1] for data in datas]
-    label_names = LabelEncoder().fit(label_datas).classes_
+        label_datas = [data[1] for data in datas]
+        label_names = LabelEncoder().fit(label_datas).classes_
 
-    def print_training(data_set, label_set, label_names, model):
-        correct = 0
-        total = len(data_set)
-        for i in range(total):
-            feature = data_set[i].reshape(1, -1)
-            predicted = model.predict(feature)[0]
-            label = label_set[i]
-            if predicted == label:
-                correct += 1
-        print("{}/{}({:.4f}%)".format(correct, total, 100 * correct / total))
+        def print_training(data_set, label_set, label_names, model):
+            correct = 0
+            total = len(data_set)
+            for i in range(total):
+                feature = data_set[i].reshape(1, -1)
+                predicted = model.predict(feature)[0]
+                label = label_set[i]
+                if predicted == label:
+                    correct += 1
+            print("\t{}/{}({:.4f}%)".format(correct, total, 100 * correct / total))
 
-    print("[TRAIN SET RESULT]")
-    print_training(train_set, train_labels, label_names, model)
-    print("[TEST SET RESULT]")
-    print_training(test_set, test_labels, label_names, model)
+        print("[TRAIN SET RESULT]")
+        print_training(train_set, train_labels, label_names, model)
+        print("[TEST SET RESULT]")
+        print_training(test_set, test_labels, label_names, model)
