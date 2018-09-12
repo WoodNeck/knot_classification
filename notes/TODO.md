@@ -6,3 +6,10 @@
 SIFT 단계는 동일하게 구성 -> 하나의 이미지에서 발생하는 모든 descriptor에 대해 128size의 하나의 descriptor로 reduce -> 이를 kNN의 input으로 사용
 
 이 때 reduce시 summation과 average 방법을 둘 다 사용해보고, 이를 비교
+
+
+
+
+## 18.09.10
+1. 각 이미지별로 생성된 descriptor를 kmeans 클러스터된 것을 기준으로 분류하여 csv 포맷으로 저장
+2. 하나의 Cluster에 descriptor가 치중되는 현상을 체크
