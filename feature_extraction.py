@@ -60,6 +60,7 @@ def extract_feature(img_paths, img_labels):
             print("[SIFT]{}/{}".format(processed, total))
 
     summed_descriptors = summed_descriptors.reshape(-1, DESCRIPTOR_LENGTH)
+    
     for i in range(CLASS_NUM):
         descriptors_per_class[i] = descriptors_per_class[i] / descriptor_counts[i]
 

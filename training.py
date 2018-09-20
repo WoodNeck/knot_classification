@@ -16,6 +16,7 @@ def train(datas, output_dir):
 
     features = np.array(features_string)
     labels = np.array(labels_string)
+    print(labels)
 
     # Shuffle Data
     seed = 1234

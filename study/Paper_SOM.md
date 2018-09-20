@@ -20,13 +20,13 @@
 ## 모델
 
 해당 논문에서는 사용 알고리즘이 동일한 모델을 두 가지에 동시에 적용한다.
+
 1. 목재에서 Defect가 있는 부분 탐색
 2. Defect간의 구분
 
-#### MODEL
+### MODEL
 
 >Feature Extraction: **Color Histogram**
-
 >Additional Feature: **1, 2차 모멘트**
 
 - knot을 구성하는 타원의 방향과, major 축과 minor 축에서의 길이
@@ -36,6 +36,7 @@
 - 특성 벡터를 차원 축소하고, 군집화
 
 ## Color Histogram
+
 ![Color Histogram](https://www.researchgate.net/profile/Muhammad_Usman_Tariq/publication/258885776/figure/fig4/AS:340827483197444@1458271012330/Color-Histogram-The-features-extracted-from-the-above-histogram-of-the-image-are-stored.jpg)
 
 이미지에 컬러 히스토그램을 적용하면 명암(1차원)/RGB(3차원)값이 나타난 빈도수를 표현하게 되며, 이를 이미지의 특징으로 이용할 수 있다.
@@ -43,6 +44,7 @@
 사용하고 싶은 데이터에 따라 명암(L, 1차원), HS(2차원), RGB(3차원) 등을 만들 수 있다
 
 ## Self-Organizing Map
+
 자기조직화지도(SOM)는 차원 축소와 군집화(Clustering)를 동시에 수행하는 모델이다
 
 ![SOM](https://image.slidesharecdn.com/somchuc-110117091410-phpapp01/95/sefl-organizing-map-7-728.jpg?cb=1295255891)

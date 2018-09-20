@@ -2,3 +2,7 @@
 knots_processed/
 augmentation/
 knots/
+.ipynb_checkpoints/
+
+# Datas
+data/

@@ -1,6 +1,6 @@
 import os
 import re
-from preprocess import preprocess
+#from preprocess import preprocess
 from feature_extraction import extract_feature
 from training import train
 
@@ -27,10 +27,10 @@ for file in files:
 # preprocess(img_dir, datas)
 # print("Preprocessing Done...")
 
-print("Extracting Feature...")
-extract_feature(img_paths, img_labels)
-print("Feature Extracting Done...")
+#print("Extracting Feature...")
+#extract_feature(img_paths, img_labels)
+#print("Feature Extracting Done...")
 
-# print("Starting Training...")
-# train(datas, "data")
-# print("Training Done...")
+print("Starting Training...")
+train(datas, "data")
+print("Training Done...")
