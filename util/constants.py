@@ -4,6 +4,10 @@ SIFT_KEYPOINT_INFO_PATH = "data/keypoint_info.h5"
 SIFT_KEYPOINT_PATH = "data/keypoint.h5"
 SIFT_DESCRIPTOR_PATH = "data/descriptor.h5"
 
+EXCLUDED_KEYPOINT_INFO_PATH = "data/excluded_keypoint_info.h5"
+EXCLUDED_KEYPOINT_PATH = "data/excluded_keypoint.h5"
+EXCLUDED_DESCRIPTOR_PATH = "data/excluded_descriptor.h5"
+
 DESCRIPTOR_LENGTH = 128  # 4 * 4 * 8(논문 기준)
 CLASS_NUM = 7
 
